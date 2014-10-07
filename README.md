@@ -43,6 +43,17 @@ En plus d’une installation classique d’un plugin Dokuwiki, il vous faudra :
 
 (qui ne fait rien d’autre qu’ajouter `?do=export_microalg` à l’URL).
 
+**3)** Une idée pour `inc/lang/fr/edit.txt` :
+
+    Modifiez cette page puis cliquez sur « Aperçu ». Une fois satisfaite, cliquer sur « Enregistrer ».  
+    Pour du code *MicroAlg*, n’oubliez pas les balises:
+
+        (MicroAlg "nom_du_prg")
+        ... ici du code MicroAlg ...
+        (/MicroAlg)
+
+    Voyez le [[:wiki:syntax|guide de mise en page]] pour une aide à propos du formatage.
+
 Communication
 -------------
 
