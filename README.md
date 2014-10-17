@@ -4,9 +4,13 @@ dokuwiki-plugin-microalg
 Pitch
 -----
 
-Incorporez des échantillons interactifs de code [MicroAlg](http://microalg.info)
-dans votre installation de [Dokuwiki](http://dokuwiki.org/). Voir
-[la galerie MicroAlg](http://galerie.microalg.info/)).
+Ce plugin permet à votre installation de [Dokuwiki](http://dokuwiki.org/) :
+
+* d’inclure des échantillons interactifs de code [MicroAlg](http://microalg.info)
+  (voir par exemple [la galerie MicroAlg](http://galerie.microalg.info/)) ;
+* d’exporter chaque page sous la forme de scripts `.malg` (voir tout en bas
+  de chaque page de [la galerie MicroAlg](http://galerie.microalg.info/) le lien
+  `Télécharger le .malg`).
 
 Contenu
 -------
