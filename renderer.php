@@ -192,8 +192,28 @@ class renderer_plugin_microalg extends Doku_Renderer {
         $this->doc .= MALG_COM.' '.$id.')';
     }
 
+    function listo_open() {
+        $this->doc .= DOKU_LF;
+    }
+
+    function listo_close() {
+        $this->doc .= DOKU_LF;
+    }
+
+    function listu_open() {
+        $this->doc .= DOKU_LF;
+    }
+
     function listu_close() {
         $this->doc .= DOKU_LF;
+    }
+
+    function listitem_open($level) {
+        $this->doc .= MALG_COM.' * ';
+    }
+
+    function listitem_close() {
+        // nothing
     }
 
     function listcontent_close() {
