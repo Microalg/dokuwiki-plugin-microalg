@@ -27,9 +27,10 @@ Le plugin est constitué de :
 Installation
 ------------
 
-En plus d’une installation classique d’un plugin Dokuwiki, il vous faudra :
+En plus d’une installation classique d’un plugin Dokuwiki (renommer si besoin
+le répertoire en `microalg`), il vous faudra :
 
-**1)** Ajouter un fichier `meta.html` à votre template :
+**1)** Ajouter un fichier `meta.html` (fourni) à votre template :
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="emulisp/emulisp_core.js" type="text/javascript"></script>

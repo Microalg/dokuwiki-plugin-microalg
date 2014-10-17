@@ -1,7 +1,7 @@
 base   microalg
 author ProfGra
 email  profgra.org@gmail.com
-date   2014-10-04
+date   2014-10-17
 name   microalg plugin
 desc   Embed MicroAlg snippets
 url    https://github.com/Microalg/dokuwiki-plugin-microalg
