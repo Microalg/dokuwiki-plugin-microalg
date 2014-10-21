@@ -54,7 +54,8 @@ téléchargeant une [release](https://github.com/Microalg/Microalg/releases).
 
 (qui ne fait rien d’autre qu’ajouter `?do=export_microalg` à l’URL).
 
-**4)** Une idée pour `inc/lang/fr/edit.txt` :
+**4)** Une idée pour ajouter des instructions lors de l’édition d’une page est
+de modifier `inc/lang/fr/edit.txt` (ou utiliser celui fourni) :
 
     Modifiez cette page puis cliquez sur « Aperçu ». Une fois satisfaite, cliquer sur « Enregistrer ».  
     Pour du code *MicroAlg*, n’oubliez pas les balises:
