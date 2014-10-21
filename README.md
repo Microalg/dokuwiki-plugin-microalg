@@ -30,17 +30,23 @@ Installation
 En plus d’une installation classique d’un plugin Dokuwiki (renommer si besoin
 le répertoire en `microalg`), il vous faudra :
 
-**1)** Ajouter un fichier `meta.html` (fourni) à votre template :
+**1)** Ajouter un fichier `meta.html` (fourni) à votre template (un lien
+symbolique suffira) :
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="emulisp/emulisp_core.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="web/style.css" />
-    <script type="text/javascript" src="web/ide_injections.js"></script>
-    <script type="text/javascript" src="web/parenedit.js"></script>
-    <link type="text/css" href="web/parenedit.css" rel="stylesheet" />
-    <script type="text/javascript" src="web/showdown.js"></script>
+    <script src="microalg/emulisp/emulisp_core.js" type="text/javascript"></script>
+    <link  href="microalg/web/style.css" rel="stylesheet" type="text/css" />
+    <script src="microalg/web/ide_injections.js" type="text/javascript"></script>
+    <script src="microalg/web/parenedit.js" type="text/javascript"></script>
+    <link  href="microalg/web/parenedit.css" rel="stylesheet" type="text/css" />
+    <script src="microalg/web/showdown.js" type="text/javascript"></script>
 
-**2)** Pour l’export des pages en `.malg`, ajouter ceci quelque part :
+**2)** Les six derniers fichiers appelés par `meta.html` sont fournis dans
+[les distribution de MicroAlg](https://github.com/Microalg/Microalg). L’idée
+est d’amener le répertoire `microalg` à côté de `doku.php` via `git` ou en
+téléchargeant une [release](https://github.com/Microalg/Microalg/releases).
+
+**3)** Pour l’export des pages en `.malg`, ajouter ceci quelque part :
 
     <div class="docInfo">
         <a href="<?php echo exportlink($ID, 'microalg')?>">Télécharger le .malg</a>
@@ -48,7 +54,7 @@ le répertoire en `microalg`), il vous faudra :
 
 (qui ne fait rien d’autre qu’ajouter `?do=export_microalg` à l’URL).
 
-**3)** Une idée pour `inc/lang/fr/edit.txt` :
+**4)** Une idée pour `inc/lang/fr/edit.txt` :
 
     Modifiez cette page puis cliquez sur « Aperçu ». Une fois satisfaite, cliquer sur « Enregistrer ».  
     Pour du code *MicroAlg*, n’oubliez pas les balises:
