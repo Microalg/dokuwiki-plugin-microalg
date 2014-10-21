@@ -80,14 +80,14 @@ class syntax_plugin_microalg extends DokuWiki_Syntax_Plugin {
                         $renderer->doc .= "</div>\n";
                     } else {
                         $renderer->doc .= '<div id="' . $div_id . '"></div>' . "\n";
-                        $renderer->doc .= '<script>inject_microalg_editor_in("' . $div_id . '", {localStorage: false},' . "\n";
+                        $renderer->doc .= '<script>inject_microalg_editor_in("' . $div_id . '", {src:' . "\n";
                     }
                     break;
                 case DOKU_LEXER_UNMATCHED :
                     $renderer->doc .= $this->_malg_escape($match);
                     break;
                 case DOKU_LEXER_EXIT :
-                    $renderer->doc .= "'');</script>" . "\n";
+                    $renderer->doc .= "''});</script>" . "\n";
                     break;
             }
             return true;
