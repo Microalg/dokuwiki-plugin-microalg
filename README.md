@@ -66,6 +66,13 @@ de modifier `inc/lang/fr/edit.txt` (ou utiliser celui fourni) :
 
     Voyez le [[:wiki:syntax|guide de mise en page]] pour une aide à propos du formatage.
 
+**5)** Une autre idée pour faciliter la vie des utilisateurs, créer un
+fichier `__template.txt` dans `/data/pages/` contenant x(ou utiliser celui fourni) :
+
+    (MicroAlg "@FILE@")
+    
+    (/MicroAlg)
+
 Communication
 -------------
 
