@@ -60,28 +60,39 @@ class syntax_plugin_microalg extends DokuWiki_Syntax_Plugin {
             list($state, $match) = $data;
             switch ($state) {
                 case DOKU_LEXER_ENTER :
-                    // Entry tag is like (MALG_TAG "div_id")
-                    $div_id = substr($match, strlen('(' . MALG_TAG . ' "'), -(strlen('")')));
+                    list($div_id, $conf) = $this->_malg_parse_tag($match);
                     $error_msg = "";
+                    // Check the div_id :
                     if ($div_id == "")
                         $error_msg = "Il manque l’identifiant du programme.";
                     if (!preg_match('/^[_a-zA-Z]+[_a-zA-Z0-9-]*$/', $div_id))
                         $error_msg = "L’identifiant ne doit contenir que des lettres, des chiffres et des tirets";
                     if (preg_match('/\s/', $div_id))
                         $error_msg = "L’identifiant ne doit pas contenir d’espace.";
+                    // Check the conf :
+                    $parsed_conf = json_decode($conf);
+                    if ($conf != "" && $parsed_conf == NULL)
+                        $error_msg = "La configuration est mal formée. Elle doit être au format JSON.";
+                    // Display error messages and raise the error flag for UNMATCHED and EXIT :
                     if ($error_msg != "") {
                         $renderer->error = true;
                         $renderer->doc .= "<div class=\"error\">";
                         $renderer->doc .= "Vous voulez insérer du code MicroAlg ?<br>\n";
                         $renderer->doc .= $error_msg . "<br>\n";
                         $renderer->doc .= "Merci de taper:\n";
-                        $renderer->doc .= "<pre>(MicroAlg \"identifiant_du_prg\")\n";
+                        $renderer->doc .= "<pre>(MicroAlg \"identifiant_du_prg\" {configuration facultative au format JSON})\n";
                         $renderer->doc .= "(... ici votre programme ...)\n";
                         $renderer->doc .= "(/MicroAlg)</pre>\n";
                         $renderer->doc .= "</div>\n";
                     } else {
                         $renderer->doc .= '<div id="' . $div_id . '"></div>' . "\n";
-                        $renderer->doc .= '<script>inject_microalg_editor_in("' . $div_id . '", {src:' . "\n";
+                        $renderer->doc .= '<script>inject_microalg_editor_in("' . $div_id . '", {' . "\n";
+                        // 2 and -2 to remove "{ and }"
+                        $json_injection = stripslashes(substr(json_encode($conf), 2, -2));
+                        if ($json_injection) {
+                            $renderer->doc .= $json_injection . ",\n";
+                        }
+                        $renderer->doc .= "src:\n";
                     }
                     break;
                 case DOKU_LEXER_UNMATCHED :
@@ -100,7 +111,7 @@ class syntax_plugin_microalg extends DokuWiki_Syntax_Plugin {
             switch ($state) {
                 case DOKU_LEXER_ENTER :
                     // Entry tag is like (MALG_TAG "div_id")
-                    $div_id = substr($match, strlen('(' . MALG_TAG . ' "'), -(strlen('")')));
+                    list($div_id, $conf_not_used) = $this->_malg_parse_tag($match);
                     $renderer->doc .= "\n# Programme " . $div_id;
                     break;
                 case DOKU_LEXER_UNMATCHED :
@@ -113,6 +124,18 @@ class syntax_plugin_microalg extends DokuWiki_Syntax_Plugin {
             return true;
         }
         return false;
+    }
+
+    function _malg_parse_tag($match) {
+        // Entry tag is like (MALG_TAG "div_id" {…optional conf as JSON…})
+        $content = substr($match, strlen('(' . MALG_TAG . ' '), -(strlen(')')));
+        // Grab the div_id :
+        $first_quote = strpos($content, '"');
+        $second_quote = strpos($content, '"', $first_quote + 1);
+        $div_id = substr($content, $first_quote + 1, $second_quote - $first_quote - 1);
+        // Grab the optional JSON :
+        $conf = trim(substr($content, $second_quote + 1));
+        return array($div_id, $conf);
     }
 
     function _malg_escape($src) {

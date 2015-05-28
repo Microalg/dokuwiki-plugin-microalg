@@ -1,7 +1,7 @@
 Modifiez cette page puis cliquez sur « Aperçu ». Une fois satisfaite, cliquer sur « Enregistrer ».  
 Pour du code *MicroAlg*, n’oubliez pas les balises:
 
-    (MicroAlg "nom_du_prg")
+    (MicroAlg "nom_du_prg" {configuration facultative au format JSON})
     ... ici du code MicroAlg ...
     (/MicroAlg)
 
