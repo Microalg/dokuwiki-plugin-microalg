@@ -70,6 +70,7 @@ class syntax_plugin_microalg extends DokuWiki_Syntax_Plugin {
                     if (preg_match('/\s/', $div_id))
                         $error_msg = "L’identifiant ne doit pas contenir d’espace.";
                     if ($error_msg != "") {
+                        $renderer->error = true;
                         $renderer->doc .= "<div class=\"error\">";
                         $renderer->doc .= "Vous voulez insérer du code MicroAlg ?<br>\n";
                         $renderer->doc .= $error_msg . "<br>\n";
@@ -84,10 +85,12 @@ class syntax_plugin_microalg extends DokuWiki_Syntax_Plugin {
                     }
                     break;
                 case DOKU_LEXER_UNMATCHED :
-                    $renderer->doc .= $this->_malg_escape($match);
+                    if (! $renderer->error)
+                        $renderer->doc .= $this->_malg_escape($match);
                     break;
                 case DOKU_LEXER_EXIT :
-                    $renderer->doc .= "''});</script>" . "\n";
+                    if (! $renderer->error)
+                        $renderer->doc .= "''});</script>" . "\n";
                     break;
             }
             return true;
