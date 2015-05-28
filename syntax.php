@@ -101,22 +101,7 @@ class syntax_plugin_microalg extends DokuWiki_Syntax_Plugin {
                 case DOKU_LEXER_ENTER :
                     // Entry tag is like (MALG_TAG "div_id")
                     $div_id = substr($match, strlen('(' . MALG_TAG . ' "'), -(strlen('")')));
-                    $error_msg = "";
-                    if ($div_id == "")
-                        $error_msg = "Il manque l’identifiant du programme.";
-                    if (!preg_match('/^[_a-zA-Z]+[_a-zA-Z0-9-]*$/', $div_id))
-                        $error_msg = "L’identifiant ne doit contenir que des lettres, des chiffres et des tirets";
-                    if (preg_match('/\s/', $div_id))
-                        $error_msg = "L’identifiant ne doit pas contenir d’espace.";
-                    if ($error_msg != "") {
-                        $renderer->doc .= "Vous voulez insérer du code MicroAlg ?\n";
-                        $renderer->doc .= $error_msg . "\n";
-                        $renderer->doc .= "Merci de taper:\n";
-                        $renderer->doc .= "    (MicroAlg \"identifiant_du_prg\")\n";
-                        $renderer->doc .= "(... ici votre programme ...)\n";
-                    } else {
-                        $renderer->doc .= "\n# Programme " . $div_id;
-                    }
+                    $renderer->doc .= "\n# Programme " . $div_id;
                     break;
                 case DOKU_LEXER_UNMATCHED :
                     $renderer->doc .= $match;
