@@ -60,16 +60,18 @@ de modifier `inc/lang/fr/edit.txt` (ou utiliser celui fourni) :
     Modifiez cette page puis cliquez sur « Aperçu ». Une fois satisfaite, cliquer sur « Enregistrer ».  
     Pour du code *MicroAlg*, n’oubliez pas les balises:
 
-        (MicroAlg "nom_du_prg")
+        (MicroAlg "nom_du_prg" {configuration facultative au format JSON})
         ... ici du code MicroAlg ...
         (/MicroAlg)
 
-    Voyez le [[:wiki:syntax|guide de mise en page]] pour une aide à propos du formatage.
+    Voyez le [[:wiki:syntax|guide de mise en page]] pour une aide à propos du
+    formatage ou les [[microalg:config_echantillons|exemples de configuration]]
+    pour une aide à propos de la configuration au format JSON.
 
 **5)** Une autre idée pour faciliter la vie des utilisateurs, créer un
 fichier `__template.txt` dans `/data/pages/` contenant (ou utiliser celui fourni) :
 
-    (MicroAlg "@FILE@")
+    (MicroAlg "@FILE@" {"processing": true})
     
     (/MicroAlg)
 
