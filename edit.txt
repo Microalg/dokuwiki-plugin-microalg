@@ -5,5 +5,5 @@ Pour du code *MicroAlg*, n’oubliez pas les balises:
     ... ici du code MicroAlg ...
     (/MicroAlg)
 
-Voyez le [[:wiki:syntax|guide de mise en page]] pour une aide à propos du formatage.
+Voyez le [[:wiki:syntax|guide de mise en page]] pour une aide à propos du formatage ou les [[microalg:config_echantillons|exemples de configuration]] pour une aide à propos de la configuration au format JSON.
 
