@@ -30,7 +30,7 @@ class syntax_plugin_microalg extends DokuWiki_Syntax_Plugin {
         return 157;
     }
     function connectTo($mode) {
-         $this->Lexer->addEntryPattern('\(' . MALG_TAG . '.*?\)(?=.*?\(/' . MALG_TAG . '\))',$mode,'plugin_microalg');
+         $this->Lexer->addEntryPattern('\(' . MALG_TAG . '.*?\)$(?=.*?\(/' . MALG_TAG . '\))',$mode,'plugin_microalg');
     }
     function postConnect() {
          $this->Lexer->addExitPattern('\(/' . MALG_TAG . '\)','plugin_microalg');
