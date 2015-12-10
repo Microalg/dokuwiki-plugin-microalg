@@ -41,6 +41,15 @@ symbolique suffira) :
     <link  href="microalg/web/parenedit.css" rel="stylesheet" type="text/css" />
     <script src="microalg/web/showdown.js" type="text/javascript"></script>
 
+Ajouter de même un fichier `footer.html` (fourni) :
+
+
+    <script type="text/javascript" src="microalg/web/tabIndent.js"></script>
+    <script>
+      tabIndent.config.tab = ' ';
+      tabIndent.renderAll();
+    </script>
+
 **2)** Les six derniers fichiers appelés par `meta.html` sont fournis dans
 [les distribution de MicroAlg](https://github.com/Microalg/Microalg). L’idée
 est d’amener le répertoire `microalg` à côté de `doku.php` via `git` ou en
