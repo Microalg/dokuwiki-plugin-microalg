@@ -1,3 +1,5 @@
-(MicroAlg "@FILE@")
+# @FILE@
+
+(MicroAlg "@FILE@-src")
 
 (/MicroAlg)
