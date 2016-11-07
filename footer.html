@@ -1,22 +1,8 @@
-<script type="text/javascript" src="microalg/web/tabIndent.js"></script>
+<script src="microalg/web/tabIndent.js" type="text/javascript"></script>
+<script src="microalg/web/jquery.textcomplete.min.js" type="text/javascript"></script>
+<link  href="microalg/web/jquery.textcomplete.css" rel="stylesheet" />
 <script>
   tabIndent.config.tab = ' ';
   tabIndent.renderAll();
-
-  var syms_as_list = EMULISP_CORE.eval("symboles").toString();
-  var syms_as_strings = syms_as_list
-    .slice(1, -1) // les parenthèses
-    .split(' ')
-    .map(cleanTransient);
-  $('.malg-editor').textcomplete([{
-      match: /(^|\b)(\w{1,})$/,
-      search: function (term, callback) {
-          callback($.map(syms_as_strings, function (word) {
-              return word.indexOf(term) === 0 ? word : null;
-          }));
-      },
-      replace: function (word) {
-          return word + ' ';
-      }
-  }]);
+  attachTextComplete();
 </script>
