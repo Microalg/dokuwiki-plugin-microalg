@@ -88,7 +88,11 @@ class syntax_plugin_microalg extends DokuWiki_Syntax_Plugin {
                         $renderer->doc .= '<div id="' . $div_id . '"></div>' . "\n";
                         $renderer->doc .= '<script>inject_microalg_editor_in("' . $div_id . '", {' . "\n";
                         // 2 and -2 to remove "{ and }"
-                        $json_injection = stripslashes(substr(json_encode($conf), 2, -2));
+                        $encoded = json_encode($conf);
+                        $patterns = array('\\u0394');
+                        $substs = array('Δ');
+                        $semi_encoded = str_replace($patterns, $substs, $encoded);
+                        $json_injection = stripslashes(substr($semi_encoded, 2, -2));
                         if ($json_injection) {
                             $renderer->doc .= $json_injection . ",\n";
                         }
